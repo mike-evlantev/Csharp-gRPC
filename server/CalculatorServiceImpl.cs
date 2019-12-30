@@ -1,15 +1,15 @@
-﻿using Grpc.Core;
-using Sum;
+﻿using Calculator;
+using Grpc.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Sum.SumService;
+using static Calculator.CalculatorService;
 
 namespace server
 {
-    public class SumServiceImpl : SumServiceBase
+    public class CalculatorServiceImpl : CalculatorServiceBase
     {
         public override Task<SumResponse> Sum(SumRequest request, ServerCallContext context)
         {
