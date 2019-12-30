@@ -15,11 +15,11 @@ message GreetingResponse {
 	string result = 1;
 }
 
-message GreetingManyTimesRequest {
+message GreetManyTimesRequest {
 	Greeting greeting = 1;
 }
 
-message GreetingManyTimesResponse {
+message GreetManyTimesResponse {
 	string result = 1;
 }
 
@@ -28,5 +28,5 @@ service GreetingService {
 	rpc Greet (GreetingRequest) returns (GreetingResponse) {};
 
 	// Server Stream
-	rpc GreetManyTimes (GreetingManyTimesRequest) returns (stream GreetingManyTimesResponse) {};
+	rpc GreetManyTimes (GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
 }

@@ -27,21 +27,21 @@ namespace Greet {
             "Cg5ncmVldGluZy5wcm90bxIFZ3JlZXQiLwoIR3JlZXRpbmcSEQoJZmlyc3RO",
             "YW1lGAEgASgJEhAKCGxhc3ROYW1lGAIgASgJIjQKD0dyZWV0aW5nUmVxdWVz",
             "dBIhCghncmVldGluZxgBIAEoCzIPLmdyZWV0LkdyZWV0aW5nIiIKEEdyZWV0",
-            "aW5nUmVzcG9uc2USDgoGcmVzdWx0GAEgASgJIj0KGEdyZWV0aW5nTWFueVRp",
-            "bWVzUmVxdWVzdBIhCghncmVldGluZxgBIAEoCzIPLmdyZWV0LkdyZWV0aW5n",
-            "IisKGUdyZWV0aW5nTWFueVRpbWVzUmVzcG9uc2USDgoGcmVzdWx0GAEgASgJ",
-            "MqYBCg9HcmVldGluZ1NlcnZpY2USOgoFR3JlZXQSFi5ncmVldC5HcmVldGlu",
-            "Z1JlcXVlc3QaFy5ncmVldC5HcmVldGluZ1Jlc3BvbnNlIgASVwoOR3JlZXRN",
-            "YW55VGltZXMSHy5ncmVldC5HcmVldGluZ01hbnlUaW1lc1JlcXVlc3QaIC5n",
-            "cmVldC5HcmVldGluZ01hbnlUaW1lc1Jlc3BvbnNlIgAwAWIGcHJvdG8z"));
+            "aW5nUmVzcG9uc2USDgoGcmVzdWx0GAEgASgJIjoKFUdyZWV0TWFueVRpbWVz",
+            "UmVxdWVzdBIhCghncmVldGluZxgBIAEoCzIPLmdyZWV0LkdyZWV0aW5nIigK",
+            "FkdyZWV0TWFueVRpbWVzUmVzcG9uc2USDgoGcmVzdWx0GAEgASgJMqABCg9H",
+            "cmVldGluZ1NlcnZpY2USOgoFR3JlZXQSFi5ncmVldC5HcmVldGluZ1JlcXVl",
+            "c3QaFy5ncmVldC5HcmVldGluZ1Jlc3BvbnNlIgASUQoOR3JlZXRNYW55VGlt",
+            "ZXMSHC5ncmVldC5HcmVldE1hbnlUaW1lc1JlcXVlc3QaHS5ncmVldC5HcmVl",
+            "dE1hbnlUaW1lc1Jlc3BvbnNlIgAwAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.Greeting), global::Greet.Greeting.Parser, new[]{ "FirstName", "LastName" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingRequest), global::Greet.GreetingRequest.Parser, new[]{ "Greeting" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingResponse), global::Greet.GreetingResponse.Parser, new[]{ "Result" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingManyTimesRequest), global::Greet.GreetingManyTimesRequest.Parser, new[]{ "Greeting" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingManyTimesResponse), global::Greet.GreetingManyTimesResponse.Parser, new[]{ "Result" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetManyTimesRequest), global::Greet.GreetManyTimesRequest.Parser, new[]{ "Greeting" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetManyTimesResponse), global::Greet.GreetManyTimesResponse.Parser, new[]{ "Result" }, null, null, null)
           }));
     }
     #endregion
@@ -469,11 +469,11 @@ namespace Greet {
 
   }
 
-  public sealed partial class GreetingManyTimesRequest : pb::IMessage<GreetingManyTimesRequest> {
-    private static readonly pb::MessageParser<GreetingManyTimesRequest> _parser = new pb::MessageParser<GreetingManyTimesRequest>(() => new GreetingManyTimesRequest());
+  public sealed partial class GreetManyTimesRequest : pb::IMessage<GreetManyTimesRequest> {
+    private static readonly pb::MessageParser<GreetManyTimesRequest> _parser = new pb::MessageParser<GreetManyTimesRequest>(() => new GreetManyTimesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GreetingManyTimesRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<GreetManyTimesRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -486,21 +486,21 @@ namespace Greet {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesRequest() {
+    public GreetManyTimesRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesRequest(GreetingManyTimesRequest other) : this() {
+    public GreetManyTimesRequest(GreetManyTimesRequest other) : this() {
       greeting_ = other.greeting_ != null ? other.greeting_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesRequest Clone() {
-      return new GreetingManyTimesRequest(this);
+    public GreetManyTimesRequest Clone() {
+      return new GreetManyTimesRequest(this);
     }
 
     /// <summary>Field number for the "greeting" field.</summary>
@@ -516,11 +516,11 @@ namespace Greet {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GreetingManyTimesRequest);
+      return Equals(other as GreetManyTimesRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GreetingManyTimesRequest other) {
+    public bool Equals(GreetManyTimesRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -570,7 +570,7 @@ namespace Greet {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GreetingManyTimesRequest other) {
+    public void MergeFrom(GreetManyTimesRequest other) {
       if (other == null) {
         return;
       }
@@ -604,11 +604,11 @@ namespace Greet {
 
   }
 
-  public sealed partial class GreetingManyTimesResponse : pb::IMessage<GreetingManyTimesResponse> {
-    private static readonly pb::MessageParser<GreetingManyTimesResponse> _parser = new pb::MessageParser<GreetingManyTimesResponse>(() => new GreetingManyTimesResponse());
+  public sealed partial class GreetManyTimesResponse : pb::IMessage<GreetManyTimesResponse> {
+    private static readonly pb::MessageParser<GreetManyTimesResponse> _parser = new pb::MessageParser<GreetManyTimesResponse>(() => new GreetManyTimesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GreetingManyTimesResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<GreetManyTimesResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -621,21 +621,21 @@ namespace Greet {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesResponse() {
+    public GreetManyTimesResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesResponse(GreetingManyTimesResponse other) : this() {
+    public GreetManyTimesResponse(GreetManyTimesResponse other) : this() {
       result_ = other.result_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GreetingManyTimesResponse Clone() {
-      return new GreetingManyTimesResponse(this);
+    public GreetManyTimesResponse Clone() {
+      return new GreetManyTimesResponse(this);
     }
 
     /// <summary>Field number for the "result" field.</summary>
@@ -651,11 +651,11 @@ namespace Greet {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GreetingManyTimesResponse);
+      return Equals(other as GreetManyTimesResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GreetingManyTimesResponse other) {
+    public bool Equals(GreetManyTimesResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -705,7 +705,7 @@ namespace Greet {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GreetingManyTimesResponse other) {
+    public void MergeFrom(GreetManyTimesResponse other) {
       if (other == null) {
         return;
       }
