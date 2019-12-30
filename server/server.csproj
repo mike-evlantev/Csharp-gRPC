@@ -76,8 +76,11 @@
     <Compile Include="models\DummyGrpc.cs" />
     <Compile Include="models\Greeting.cs" />
     <Compile Include="models\GreetingGrpc.cs" />
+    <Compile Include="models\Sum.cs" />
+    <Compile Include="models\SumGrpc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SumServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
