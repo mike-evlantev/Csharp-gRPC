@@ -71,6 +71,7 @@
     <Protobuf Include="../*.proto" OutputDir="%(RelativePath)models/" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GreetingServiceImpl.cs" />
     <Compile Include="models\Dummy.cs" />
     <Compile Include="models\DummyGrpc.cs" />
     <Compile Include="models\Greeting.cs" />
