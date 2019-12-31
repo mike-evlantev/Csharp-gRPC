@@ -35,9 +35,18 @@ message FindMaxResponse {
 	int32 result = 1;
 }
 
+message SqrtRequest {
+	int32 Int = 1;
+}
+
+message SqrtResponse {
+	double result = 1;
+}
+
 service CalculatorService {
 	// Unary
 	rpc Sum (SumRequest) returns (SumResponse) {};
+	rpc Sqrt(SqrtRequest) returns (SqrtResponse) {};
 
 	// Client Stream
 	rpc Average (stream AverageRequest) returns (AverageResponse) {};

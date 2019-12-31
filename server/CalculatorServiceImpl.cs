@@ -52,5 +52,14 @@ namespace server
                 }  
             }
         }
+
+        public override async Task<SqrtResponse> Sqrt(SqrtRequest request, ServerCallContext context)
+        {
+            var number = request.Int;
+            if (number >= 0)
+                return new SqrtResponse() { Result = Math.Sqrt(number) };
+            else
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "number < 0"));
+        }
     }
 }

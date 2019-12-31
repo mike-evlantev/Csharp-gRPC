@@ -14,6 +14,8 @@ namespace Calculator {
 
     static readonly grpc::Marshaller<global::Calculator.SumRequest> __Marshaller_calculator_SumRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SumRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.SumResponse> __Marshaller_calculator_SumResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SumResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.SqrtRequest> __Marshaller_calculator_SqrtRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SqrtRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.SqrtResponse> __Marshaller_calculator_SqrtResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SqrtResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.AverageRequest> __Marshaller_calculator_AverageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.AverageRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.AverageResponse> __Marshaller_calculator_AverageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.AverageResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.PrimeDecompositionRequest> __Marshaller_calculator_PrimeDecompositionRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.PrimeDecompositionRequest.Parser.ParseFrom);
@@ -27,6 +29,13 @@ namespace Calculator {
         "Sum",
         __Marshaller_calculator_SumRequest,
         __Marshaller_calculator_SumResponse);
+
+    static readonly grpc::Method<global::Calculator.SqrtRequest, global::Calculator.SqrtResponse> __Method_Sqrt = new grpc::Method<global::Calculator.SqrtRequest, global::Calculator.SqrtResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Sqrt",
+        __Marshaller_calculator_SqrtRequest,
+        __Marshaller_calculator_SqrtResponse);
 
     static readonly grpc::Method<global::Calculator.AverageRequest, global::Calculator.AverageResponse> __Method_Average = new grpc::Method<global::Calculator.AverageRequest, global::Calculator.AverageResponse>(
         grpc::MethodType.ClientStreaming,
@@ -66,6 +75,11 @@ namespace Calculator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Calculator.SumResponse> Sum(global::Calculator.SumRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Calculator.SqrtResponse> Sqrt(global::Calculator.SqrtRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -174,6 +188,22 @@ namespace Calculator {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Sum, null, options, request);
       }
+      public virtual global::Calculator.SqrtResponse Sqrt(global::Calculator.SqrtRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Sqrt(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Calculator.SqrtResponse Sqrt(global::Calculator.SqrtRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Sqrt, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Calculator.SqrtResponse> SqrtAsync(global::Calculator.SqrtRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SqrtAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Calculator.SqrtResponse> SqrtAsync(global::Calculator.SqrtRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Sqrt, null, options, request);
+      }
       /// <summary>
       /// Client Stream
       /// </summary>
@@ -249,6 +279,7 @@ namespace Calculator {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Sum, serviceImpl.Sum)
+          .AddMethod(__Method_Sqrt, serviceImpl.Sqrt)
           .AddMethod(__Method_Average, serviceImpl.Average)
           .AddMethod(__Method_Factorise, serviceImpl.Factorise)
           .AddMethod(__Method_FindMax, serviceImpl.FindMax).Build();
@@ -261,6 +292,7 @@ namespace Calculator {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, CalculatorServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Sum, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculator.SumRequest, global::Calculator.SumResponse>(serviceImpl.Sum));
+      serviceBinder.AddMethod(__Method_Sqrt, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculator.SqrtRequest, global::Calculator.SqrtResponse>(serviceImpl.Sqrt));
       serviceBinder.AddMethod(__Method_Average, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Calculator.AverageRequest, global::Calculator.AverageResponse>(serviceImpl.Average));
       serviceBinder.AddMethod(__Method_Factorise, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Calculator.PrimeDecompositionRequest, global::Calculator.PrimeDecompositionResponse>(serviceImpl.Factorise));
       serviceBinder.AddMethod(__Method_FindMax, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse>(serviceImpl.FindMax));

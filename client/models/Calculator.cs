@@ -31,14 +31,17 @@ namespace Calculator {
             "b25zZRIOCgZyZXN1bHQYASABKAUiHQoOQXZlcmFnZVJlcXVlc3QSCwoDaW50",
             "GAEgASgFIiEKD0F2ZXJhZ2VSZXNwb25zZRIOCgZyZXN1bHQYASABKAEiHQoO",
             "RmluZE1heFJlcXVlc3QSCwoDaW50GAEgASgFIiEKD0ZpbmRNYXhSZXNwb25z",
-            "ZRIOCgZyZXN1bHQYASABKAUyvwIKEUNhbGN1bGF0b3JTZXJ2aWNlEjgKA1N1",
-            "bRIWLmNhbGN1bGF0b3IuU3VtUmVxdWVzdBoXLmNhbGN1bGF0b3IuU3VtUmVz",
-            "cG9uc2UiABJGCgdBdmVyYWdlEhouY2FsY3VsYXRvci5BdmVyYWdlUmVxdWVz",
-            "dBobLmNhbGN1bGF0b3IuQXZlcmFnZVJlc3BvbnNlIgAoARJeCglGYWN0b3Jp",
-            "c2USJS5jYWxjdWxhdG9yLlByaW1lRGVjb21wb3NpdGlvblJlcXVlc3QaJi5j",
-            "YWxjdWxhdG9yLlByaW1lRGVjb21wb3NpdGlvblJlc3BvbnNlIgAwARJICgdG",
-            "aW5kTWF4EhouY2FsY3VsYXRvci5GaW5kTWF4UmVxdWVzdBobLmNhbGN1bGF0",
-            "b3IuRmluZE1heFJlc3BvbnNlIgAoATABYgZwcm90bzM="));
+            "ZRIOCgZyZXN1bHQYASABKAUiGgoLU3FydFJlcXVlc3QSCwoDSW50GAEgASgF",
+            "Ih4KDFNxcnRSZXNwb25zZRIOCgZyZXN1bHQYASABKAEy/AIKEUNhbGN1bGF0",
+            "b3JTZXJ2aWNlEjgKA1N1bRIWLmNhbGN1bGF0b3IuU3VtUmVxdWVzdBoXLmNh",
+            "bGN1bGF0b3IuU3VtUmVzcG9uc2UiABI7CgRTcXJ0EhcuY2FsY3VsYXRvci5T",
+            "cXJ0UmVxdWVzdBoYLmNhbGN1bGF0b3IuU3FydFJlc3BvbnNlIgASRgoHQXZl",
+            "cmFnZRIaLmNhbGN1bGF0b3IuQXZlcmFnZVJlcXVlc3QaGy5jYWxjdWxhdG9y",
+            "LkF2ZXJhZ2VSZXNwb25zZSIAKAESXgoJRmFjdG9yaXNlEiUuY2FsY3VsYXRv",
+            "ci5QcmltZURlY29tcG9zaXRpb25SZXF1ZXN0GiYuY2FsY3VsYXRvci5Qcmlt",
+            "ZURlY29tcG9zaXRpb25SZXNwb25zZSIAMAESSAoHRmluZE1heBIaLmNhbGN1",
+            "bGF0b3IuRmluZE1heFJlcXVlc3QaGy5jYWxjdWxhdG9yLkZpbmRNYXhSZXNw",
+            "b25zZSIAKAEwAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -49,7 +52,9 @@ namespace Calculator {
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.AverageRequest), global::Calculator.AverageRequest.Parser, new[]{ "Int" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.AverageResponse), global::Calculator.AverageResponse.Parser, new[]{ "Result" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.FindMaxRequest), global::Calculator.FindMaxRequest.Parser, new[]{ "Int" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.FindMaxResponse), global::Calculator.FindMaxResponse.Parser, new[]{ "Result" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.FindMaxResponse), global::Calculator.FindMaxResponse.Parser, new[]{ "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.SqrtRequest), global::Calculator.SqrtRequest.Parser, new[]{ "Int" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.SqrtResponse), global::Calculator.SqrtResponse.Parser, new[]{ "Result" }, null, null, null)
           }));
     }
     #endregion
@@ -1108,6 +1113,264 @@ namespace Calculator {
             break;
           case 8: {
             Result = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SqrtRequest : pb::IMessage<SqrtRequest> {
+    private static readonly pb::MessageParser<SqrtRequest> _parser = new pb::MessageParser<SqrtRequest>(() => new SqrtRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SqrtRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculator.CalculatorReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtRequest(SqrtRequest other) : this() {
+      int_ = other.int_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtRequest Clone() {
+      return new SqrtRequest(this);
+    }
+
+    /// <summary>Field number for the "Int" field.</summary>
+    public const int IntFieldNumber = 1;
+    private int int_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Int {
+      get { return int_; }
+      set {
+        int_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SqrtRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SqrtRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Int != other.Int) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Int != 0) hash ^= Int.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Int != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Int);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Int != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Int);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SqrtRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Int != 0) {
+        Int = other.Int;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Int = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SqrtResponse : pb::IMessage<SqrtResponse> {
+    private static readonly pb::MessageParser<SqrtResponse> _parser = new pb::MessageParser<SqrtResponse>(() => new SqrtResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SqrtResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculator.CalculatorReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtResponse(SqrtResponse other) : this() {
+      result_ = other.result_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SqrtResponse Clone() {
+      return new SqrtResponse(this);
+    }
+
+    /// <summary>Field number for the "result" field.</summary>
+    public const int ResultFieldNumber = 1;
+    private double result_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Result {
+      get { return result_; }
+      set {
+        result_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SqrtResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SqrtResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Result, other.Result)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Result != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Result);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Result != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(Result);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Result != 0D) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SqrtResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Result != 0D) {
+        Result = other.Result;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 9: {
+            Result = input.ReadDouble();
             break;
           }
         }

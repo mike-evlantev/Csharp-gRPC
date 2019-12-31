@@ -109,23 +109,40 @@ namespace client
             //var response = await stream.ResponseAsync;
             //Console.WriteLine(response.Result);
 
-            var stream = client.FindMax();
-            var responseReaderTask = Task.Run(async () =>
-            {
-                while (await stream.ResponseStream.MoveNext())
-                    Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
-            });
+            //var stream = client.FindMax();
+            //var responseReaderTask = Task.Run(async () =>
+            //{
+            //    while (await stream.ResponseStream.MoveNext())
+            //        Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
+            //});
 
-            int[] numbers = { 1, 5, 3, 6, 2, 20 };
+            //int[] numbers = { 1, 5, 3, 6, 2, 20 };
 
-            foreach (var number in numbers)
+            //foreach (var number in numbers)
+            //{
+            //    //Console.WriteLine("Sending: " + greeting.ToString());
+            //    await stream.RequestStream.WriteAsync(new FindMaxRequest() { Int = number });
+            //}
+
+            //await stream.RequestStream.CompleteAsync();
+            //await responseReaderTask;
+
+            try
             {
-                //Console.WriteLine("Sending: " + greeting.ToString());
-                await stream.RequestStream.WriteAsync(new FindMaxRequest() { Int = number });
+                var number = int.Parse(Console.ReadLine());
+                var response = client.Sqrt(new SqrtRequest() { Int = number });
+                Console.WriteLine(response.Result);
             }
-
-            await stream.RequestStream.CompleteAsync();
-            await responseReaderTask;
+            catch (RpcException ex)
+            {
+                Console.WriteLine("RPC Error: " + ex.Status.Detail);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                throw;
+            }
             #endregion
 
             channel.ShutdownAsync().Wait();
