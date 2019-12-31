@@ -18,6 +18,8 @@ namespace Calculator {
     static readonly grpc::Marshaller<global::Calculator.AverageResponse> __Marshaller_calculator_AverageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.AverageResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.PrimeDecompositionRequest> __Marshaller_calculator_PrimeDecompositionRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.PrimeDecompositionRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.PrimeDecompositionResponse> __Marshaller_calculator_PrimeDecompositionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.PrimeDecompositionResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.FindMaxRequest> __Marshaller_calculator_FindMaxRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.FindMaxRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.FindMaxResponse> __Marshaller_calculator_FindMaxResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.FindMaxResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Calculator.SumRequest, global::Calculator.SumResponse> __Method_Sum = new grpc::Method<global::Calculator.SumRequest, global::Calculator.SumResponse>(
         grpc::MethodType.Unary,
@@ -39,6 +41,13 @@ namespace Calculator {
         "Factorise",
         __Marshaller_calculator_PrimeDecompositionRequest,
         __Marshaller_calculator_PrimeDecompositionResponse);
+
+    static readonly grpc::Method<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse> __Method_FindMax = new grpc::Method<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "FindMax",
+        __Marshaller_calculator_FindMaxRequest,
+        __Marshaller_calculator_FindMaxResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -80,6 +89,18 @@ namespace Calculator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>A task indicating completion of the handler.</returns>
       public virtual global::System.Threading.Tasks.Task Factorise(global::Calculator.PrimeDecompositionRequest request, grpc::IServerStreamWriter<global::Calculator.PrimeDecompositionResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Bi-Di Stream
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      public virtual global::System.Threading.Tasks.Task FindMax(grpc::IAsyncStreamReader<global::Calculator.FindMaxRequest> requestStream, grpc::IServerStreamWriter<global::Calculator.FindMaxResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -195,6 +216,26 @@ namespace Calculator {
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_Factorise, null, options, request);
       }
+      /// <summary>
+      /// Bi-Di Stream
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncDuplexStreamingCall<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse> FindMax(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return FindMax(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Bi-Di Stream
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncDuplexStreamingCall<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse> FindMax(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_FindMax, null, options);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CalculatorServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -209,7 +250,8 @@ namespace Calculator {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Sum, serviceImpl.Sum)
           .AddMethod(__Method_Average, serviceImpl.Average)
-          .AddMethod(__Method_Factorise, serviceImpl.Factorise).Build();
+          .AddMethod(__Method_Factorise, serviceImpl.Factorise)
+          .AddMethod(__Method_FindMax, serviceImpl.FindMax).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -221,6 +263,7 @@ namespace Calculator {
       serviceBinder.AddMethod(__Method_Sum, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculator.SumRequest, global::Calculator.SumResponse>(serviceImpl.Sum));
       serviceBinder.AddMethod(__Method_Average, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Calculator.AverageRequest, global::Calculator.AverageResponse>(serviceImpl.Average));
       serviceBinder.AddMethod(__Method_Factorise, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Calculator.PrimeDecompositionRequest, global::Calculator.PrimeDecompositionResponse>(serviceImpl.Factorise));
+      serviceBinder.AddMethod(__Method_FindMax, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Calculator.FindMaxRequest, global::Calculator.FindMaxResponse>(serviceImpl.FindMax));
     }
 
   }

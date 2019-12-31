@@ -49,7 +49,7 @@ namespace server
                 var result = String.Format("Hello, {0} {1}",
                     requestStream.Current.Greeting.FirstName,
                     requestStream.Current.Greeting.LastName);
-                Console.WriteLine("Received: " + result);
+                //Console.WriteLine("Received: " + result);
                 await responseStream.WriteAsync(new GreetEveryoneResponse() { Result = result });
             }
             

@@ -27,7 +27,7 @@ namespace client
             #endregion
 
             #region Greeting Service
-            var client = new GreetingService.GreetingServiceClient(channel);
+            //var client = new GreetingService.GreetingServiceClient(channel);
 
             //var greeting = new Greeting()
             //{
@@ -57,37 +57,37 @@ namespace client
             //var response = await stream.ResponseAsync;
             //Console.WriteLine(response.Result);
 
-            var stream = client.GreetEveryone();
-            var responseReaderTask = Task.Run(async () =>
-            {
-                while (await stream.ResponseStream.MoveNext())
-                {
-                    Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
-                }
-            });
+            //var stream = client.GreetEveryone();
+            //var responseReaderTask = Task.Run(async () =>
+            //{
+            //    while (await stream.ResponseStream.MoveNext())
+            //    {
+            //        Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
+            //    }
+            //});
 
-            Greeting[] greetings =
-            {
-                new Greeting() { FirstName = "Andy", LastName = "Anderson" },
-                new Greeting() { FirstName = "Betty", LastName = "Burgers"},
-                new Greeting() { FirstName = "Carl", LastName = "Carlson"},
-                new Greeting() { FirstName = "Debbie", LastName = "Douglas" },
-                new Greeting() { FirstName = "Eve", LastName = "Evans"},
-                new Greeting() { FirstName = "Frank", LastName = "Franklin"}
-            };
+            //Greeting[] greetings =
+            //{
+            //    new Greeting() { FirstName = "Andy", LastName = "Anderson" },
+            //    new Greeting() { FirstName = "Betty", LastName = "Burgers"},
+            //    new Greeting() { FirstName = "Carl", LastName = "Carlson"},
+            //    new Greeting() { FirstName = "Debbie", LastName = "Douglas" },
+            //    new Greeting() { FirstName = "Eve", LastName = "Evans"},
+            //    new Greeting() { FirstName = "Frank", LastName = "Franklin"}
+            //};
 
-            foreach (var greeting in greetings)
-            {
-                //Console.WriteLine("Sending: " + greeting.ToString());
-                await stream.RequestStream.WriteAsync(new GreetEveryoneRequest() { Greeting = greeting });
-            }
+            //foreach (var greeting in greetings)
+            //{
+            //    //Console.WriteLine("Sending: " + greeting.ToString());
+            //    await stream.RequestStream.WriteAsync(new GreetEveryoneRequest() { Greeting = greeting });
+            //}
 
-            await stream.RequestStream.CompleteAsync();
-            await responseReaderTask;
+            //await stream.RequestStream.CompleteAsync();
+            //await responseReaderTask;
             #endregion
 
             #region Calculator Service
-            //var client = new CalculatorService.CalculatorServiceClient(channel);
+            var client = new CalculatorService.CalculatorServiceClient(channel);
 
             //var request = GetSumRequest();
             //var response = client.Sum(request); // This function is called from the server over 127.0.0.1:50051
@@ -108,6 +108,24 @@ namespace client
             //await stream.RequestStream.CompleteAsync();
             //var response = await stream.ResponseAsync;
             //Console.WriteLine(response.Result);
+
+            var stream = client.FindMax();
+            var responseReaderTask = Task.Run(async () =>
+            {
+                while (await stream.ResponseStream.MoveNext())
+                    Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
+            });
+
+            int[] numbers = { 1, 5, 3, 6, 2, 20 };
+
+            foreach (var number in numbers)
+            {
+                //Console.WriteLine("Sending: " + greeting.ToString());
+                await stream.RequestStream.WriteAsync(new FindMaxRequest() { Int = number });
+            }
+
+            await stream.RequestStream.CompleteAsync();
+            await responseReaderTask;
             #endregion
 
             channel.ShutdownAsync().Wait();

@@ -39,5 +39,18 @@ namespace server
             double result = streamResult.Average();
             return new AverageResponse() { Result = result };
         }
+
+        public override async Task FindMax(IAsyncStreamReader<FindMaxRequest> requestStream, IServerStreamWriter<FindMaxResponse> responseStream, ServerCallContext context)
+        {
+            int? max = null;
+            while (await requestStream.MoveNext())
+            {
+                if (max == null || max < requestStream.Current.Int)
+                {
+                    max = requestStream.Current.Int;
+                    await responseStream.WriteAsync(new FindMaxResponse() { Result = max.Value });
+                }  
+            }
+        }
     }
 }
