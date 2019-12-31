@@ -27,7 +27,7 @@ namespace client
             #endregion
 
             #region Greeting Service
-            //var client = new GreetingService.GreetingServiceClient(channel);
+            var client = new GreetingService.GreetingServiceClient(channel);
 
             //var greeting = new Greeting()
             //{
@@ -53,15 +53,41 @@ namespace client
             //{
             //    await stream.RequestStream.WriteAsync(request);
             //}
-
             //await stream.RequestStream.CompleteAsync();
             //var response = await stream.ResponseAsync;
-
             //Console.WriteLine(response.Result);
+
+            var stream = client.GreetEveryone();
+            var responseReaderTask = Task.Run(async () =>
+            {
+                while (await stream.ResponseStream.MoveNext())
+                {
+                    Console.WriteLine("Received: " + stream.ResponseStream.Current.Result);
+                }
+            });
+
+            Greeting[] greetings =
+            {
+                new Greeting() { FirstName = "Andy", LastName = "Anderson" },
+                new Greeting() { FirstName = "Betty", LastName = "Burgers"},
+                new Greeting() { FirstName = "Carl", LastName = "Carlson"},
+                new Greeting() { FirstName = "Debbie", LastName = "Douglas" },
+                new Greeting() { FirstName = "Eve", LastName = "Evans"},
+                new Greeting() { FirstName = "Frank", LastName = "Franklin"}
+            };
+
+            foreach (var greeting in greetings)
+            {
+                //Console.WriteLine("Sending: " + greeting.ToString());
+                await stream.RequestStream.WriteAsync(new GreetEveryoneRequest() { Greeting = greeting });
+            }
+
+            await stream.RequestStream.CompleteAsync();
+            await responseReaderTask;
             #endregion
 
             #region Calculator Service
-            var client = new CalculatorService.CalculatorServiceClient(channel);
+            //var client = new CalculatorService.CalculatorServiceClient(channel);
 
             //var request = GetSumRequest();
             //var response = client.Sum(request); // This function is called from the server over 127.0.0.1:50051
@@ -74,16 +100,14 @@ namespace client
             //    await Task.Delay(200);
             //}
 
-            var stream = client.Average();
-            foreach (var i in Enumerable.Range(1, 4))
-            {
-                await stream.RequestStream.WriteAsync(new AverageRequest() { Int = i });
-            }
-
-            await stream.RequestStream.CompleteAsync();
-            var response = await stream.ResponseAsync;
-
-            Console.WriteLine(response.Result);
+            //var stream = client.Average();
+            //foreach (var i in Enumerable.Range(1, 4))
+            //{
+            //    await stream.RequestStream.WriteAsync(new AverageRequest() { Int = i });
+            //}
+            //await stream.RequestStream.CompleteAsync();
+            //var response = await stream.ResponseAsync;
+            //Console.WriteLine(response.Result);
             #endregion
 
             channel.ShutdownAsync().Wait();
