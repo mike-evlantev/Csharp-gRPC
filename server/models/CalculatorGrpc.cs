@@ -14,6 +14,8 @@ namespace Calculator {
 
     static readonly grpc::Marshaller<global::Calculator.SumRequest> __Marshaller_calculator_SumRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SumRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.SumResponse> __Marshaller_calculator_SumResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.SumResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.AverageRequest> __Marshaller_calculator_AverageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.AverageRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Calculator.AverageResponse> __Marshaller_calculator_AverageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.AverageResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.PrimeDecompositionRequest> __Marshaller_calculator_PrimeDecompositionRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.PrimeDecompositionRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Calculator.PrimeDecompositionResponse> __Marshaller_calculator_PrimeDecompositionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Calculator.PrimeDecompositionResponse.Parser.ParseFrom);
 
@@ -23,6 +25,13 @@ namespace Calculator {
         "Sum",
         __Marshaller_calculator_SumRequest,
         __Marshaller_calculator_SumResponse);
+
+    static readonly grpc::Method<global::Calculator.AverageRequest, global::Calculator.AverageResponse> __Method_Average = new grpc::Method<global::Calculator.AverageRequest, global::Calculator.AverageResponse>(
+        grpc::MethodType.ClientStreaming,
+        __ServiceName,
+        "Average",
+        __Marshaller_calculator_AverageRequest,
+        __Marshaller_calculator_AverageResponse);
 
     static readonly grpc::Method<global::Calculator.PrimeDecompositionRequest, global::Calculator.PrimeDecompositionResponse> __Method_Factorise = new grpc::Method<global::Calculator.PrimeDecompositionRequest, global::Calculator.PrimeDecompositionResponse>(
         grpc::MethodType.ServerStreaming,
@@ -48,6 +57,17 @@ namespace Calculator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Calculator.SumResponse> Sum(global::Calculator.SumRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Client Stream
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Calculator.AverageResponse> Average(grpc::IAsyncStreamReader<global::Calculator.AverageRequest> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -134,6 +154,26 @@ namespace Calculator {
         return CallInvoker.AsyncUnaryCall(__Method_Sum, null, options, request);
       }
       /// <summary>
+      /// Client Stream
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Calculator.AverageRequest, global::Calculator.AverageResponse> Average(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Average(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Client Stream
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncClientStreamingCall<global::Calculator.AverageRequest, global::Calculator.AverageResponse> Average(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncClientStreamingCall(__Method_Average, null, options);
+      }
+      /// <summary>
       /// Server Stream
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -168,6 +208,7 @@ namespace Calculator {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Sum, serviceImpl.Sum)
+          .AddMethod(__Method_Average, serviceImpl.Average)
           .AddMethod(__Method_Factorise, serviceImpl.Factorise).Build();
     }
 
@@ -178,6 +219,7 @@ namespace Calculator {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, CalculatorServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Sum, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculator.SumRequest, global::Calculator.SumResponse>(serviceImpl.Sum));
+      serviceBinder.AddMethod(__Method_Average, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Calculator.AverageRequest, global::Calculator.AverageResponse>(serviceImpl.Average));
       serviceBinder.AddMethod(__Method_Factorise, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Calculator.PrimeDecompositionRequest, global::Calculator.PrimeDecompositionResponse>(serviceImpl.Factorise));
     }
 

@@ -19,9 +19,20 @@ message PrimeDecompositionResponse {
 	int32 result = 1;
 }
 
+message AverageRequest {
+	int32 int = 1;
+}
+
+message AverageResponse {
+	double result = 1;
+}
+
 service CalculatorService {
 	// Unary
 	rpc Sum (SumRequest) returns (SumResponse) {};
+
+	// Client Stream
+	rpc Average (stream AverageRequest) returns (AverageResponse) {};
 
 	// Server Stream
 	rpc Factorise (PrimeDecompositionRequest) returns (stream PrimeDecompositionResponse) {};

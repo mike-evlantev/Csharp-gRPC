@@ -27,13 +27,13 @@ namespace client
             #endregion
 
             #region Greeting Service
-            var client = new GreetingService.GreetingServiceClient(channel);
+            //var client = new GreetingService.GreetingServiceClient(channel);
 
-            var greeting = new Greeting()
-            {
-                FirstName = "Mike",
-                LastName = "Evlantev"
-            };
+            //var greeting = new Greeting()
+            //{
+            //    FirstName = "Mike",
+            //    LastName = "Evlantev"
+            //};
             //var request = new GreetingRequest() { Greeting = greeting };
 
             //// This function is called from the server over 127.0.0.1:50051
@@ -47,21 +47,21 @@ namespace client
             //    await Task.Delay(200);
             //}
 
-            var request = new LongGreetRequest() { Greeting = greeting };
-            var stream = client.LongGreet();
-            foreach (var i in Enumerable.Range(1, 10))
-            {
-                await stream.RequestStream.WriteAsync(request);
-            }
+            //var request = new LongGreetRequest() { Greeting = greeting };
+            //var stream = client.LongGreet();
+            //foreach (var i in Enumerable.Range(1, 10))
+            //{
+            //    await stream.RequestStream.WriteAsync(request);
+            //}
 
-            await stream.RequestStream.CompleteAsync();
-            var response = await stream.ResponseAsync;
+            //await stream.RequestStream.CompleteAsync();
+            //var response = await stream.ResponseAsync;
 
-            Console.WriteLine(response.Result);
+            //Console.WriteLine(response.Result);
             #endregion
 
             #region Calculator Service
-            //var client = new CalculatorService.CalculatorServiceClient(channel);
+            var client = new CalculatorService.CalculatorServiceClient(channel);
 
             //var request = GetSumRequest();
             //var response = client.Sum(request); // This function is called from the server over 127.0.0.1:50051
@@ -73,6 +73,17 @@ namespace client
             //    Console.WriteLine(response.ResponseStream.Current.Result);
             //    await Task.Delay(200);
             //}
+
+            var stream = client.Average();
+            foreach (var i in Enumerable.Range(1, 4))
+            {
+                await stream.RequestStream.WriteAsync(new AverageRequest() { Int = i });
+            }
+
+            await stream.RequestStream.CompleteAsync();
+            var response = await stream.ResponseAsync;
+
+            Console.WriteLine(response.Result);
             #endregion
 
             channel.ShutdownAsync().Wait();

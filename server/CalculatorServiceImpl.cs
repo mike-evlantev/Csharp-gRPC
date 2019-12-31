@@ -28,5 +28,16 @@ namespace server
                 }
             }
         }
+
+        public override async Task<AverageResponse> Average(IAsyncStreamReader<AverageRequest> requestStream, ServerCallContext context)
+        {
+            List<int> streamResult = new List<int>();
+            while (await requestStream.MoveNext())
+            {
+                streamResult.Add(requestStream.Current.Int);
+            }
+            double result = streamResult.Average();
+            return new AverageResponse() { Result = result };
+        }
     }
 }
