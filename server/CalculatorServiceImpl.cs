@@ -16,5 +16,17 @@ namespace server
             var result = request.FirstInt + request.SecondInt;
             return Task.FromResult(new SumResponse() { Result = result });
         }
+
+        public override async Task Factorise(PrimeDecompositionRequest request, IServerStreamWriter<PrimeDecompositionResponse> responseStream, ServerCallContext context)
+        {
+            for (int b = 2; request.Int > 1; b++)
+            {
+                while (request.Int % b == 0)
+                {
+                    request.Int /= b;
+                    await responseStream.WriteAsync(new PrimeDecompositionResponse() { Result = b });
+                }
+            }
+        }
     }
 }

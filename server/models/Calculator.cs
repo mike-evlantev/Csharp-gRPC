@@ -26,14 +26,20 @@ namespace Calculator {
           string.Concat(
             "ChBjYWxjdWxhdG9yLnByb3RvEgpjYWxjdWxhdG9yIjEKClN1bVJlcXVlc3QS",
             "EAoIZmlyc3RJbnQYASABKAUSEQoJc2Vjb25kSW50GAIgASgFIh0KC1N1bVJl",
-            "c3BvbnNlEg4KBnJlc3VsdBgBIAEoBTJNChFDYWxjdWxhdG9yU2VydmljZRI4",
-            "CgNTdW0SFi5jYWxjdWxhdG9yLlN1bVJlcXVlc3QaFy5jYWxjdWxhdG9yLlN1",
-            "bVJlc3BvbnNlIgBiBnByb3RvMw=="));
+            "c3BvbnNlEg4KBnJlc3VsdBgBIAEoBSIoChlQcmltZURlY29tcG9zaXRpb25S",
+            "ZXF1ZXN0EgsKA2ludBgBIAEoBSIsChpQcmltZURlY29tcG9zaXRpb25SZXNw",
+            "b25zZRIOCgZyZXN1bHQYASABKAUyrQEKEUNhbGN1bGF0b3JTZXJ2aWNlEjgK",
+            "A1N1bRIWLmNhbGN1bGF0b3IuU3VtUmVxdWVzdBoXLmNhbGN1bGF0b3IuU3Vt",
+            "UmVzcG9uc2UiABJeCglGYWN0b3Jpc2USJS5jYWxjdWxhdG9yLlByaW1lRGVj",
+            "b21wb3NpdGlvblJlcXVlc3QaJi5jYWxjdWxhdG9yLlByaW1lRGVjb21wb3Np",
+            "dGlvblJlc3BvbnNlIgAwAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.SumRequest), global::Calculator.SumRequest.Parser, new[]{ "FirstInt", "SecondInt" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.SumResponse), global::Calculator.SumResponse.Parser, new[]{ "Result" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.SumResponse), global::Calculator.SumResponse.Parser, new[]{ "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.PrimeDecompositionRequest), global::Calculator.PrimeDecompositionRequest.Parser, new[]{ "Int" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculator.PrimeDecompositionResponse), global::Calculator.PrimeDecompositionResponse.Parser, new[]{ "Result" }, null, null, null)
           }));
     }
     #endregion
@@ -299,6 +305,264 @@ namespace Calculator {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(SumResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Result != 0) {
+        Result = other.Result;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Result = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PrimeDecompositionRequest : pb::IMessage<PrimeDecompositionRequest> {
+    private static readonly pb::MessageParser<PrimeDecompositionRequest> _parser = new pb::MessageParser<PrimeDecompositionRequest>(() => new PrimeDecompositionRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PrimeDecompositionRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculator.CalculatorReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionRequest(PrimeDecompositionRequest other) : this() {
+      int_ = other.int_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionRequest Clone() {
+      return new PrimeDecompositionRequest(this);
+    }
+
+    /// <summary>Field number for the "int" field.</summary>
+    public const int IntFieldNumber = 1;
+    private int int_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Int {
+      get { return int_; }
+      set {
+        int_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PrimeDecompositionRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PrimeDecompositionRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Int != other.Int) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Int != 0) hash ^= Int.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Int != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Int);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Int != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Int);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PrimeDecompositionRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Int != 0) {
+        Int = other.Int;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Int = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PrimeDecompositionResponse : pb::IMessage<PrimeDecompositionResponse> {
+    private static readonly pb::MessageParser<PrimeDecompositionResponse> _parser = new pb::MessageParser<PrimeDecompositionResponse>(() => new PrimeDecompositionResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PrimeDecompositionResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculator.CalculatorReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionResponse(PrimeDecompositionResponse other) : this() {
+      result_ = other.result_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PrimeDecompositionResponse Clone() {
+      return new PrimeDecompositionResponse(this);
+    }
+
+    /// <summary>Field number for the "result" field.</summary>
+    public const int ResultFieldNumber = 1;
+    private int result_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Result {
+      get { return result_; }
+      set {
+        result_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PrimeDecompositionResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PrimeDecompositionResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Result != other.Result) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Result != 0) hash ^= Result.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Result != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Result);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Result != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PrimeDecompositionResponse other) {
       if (other == null) {
         return;
       }

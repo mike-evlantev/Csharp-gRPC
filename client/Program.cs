@@ -1,4 +1,5 @@
-﻿using Dummy;
+﻿using Calculator;
+using Dummy;
 using Greet;
 using Grpc.Core;
 using System;
@@ -25,42 +26,61 @@ namespace client
             //var client = new DummyService.DummyServiceClient(channel);
             #endregion
 
-            #region Sum Service
-            //var client = new SumService.SumServiceClient(channel);
+            #region Greeting Service
+            //var client = new GreetingService.GreetingServiceClient(channel);
 
-            //Console.WriteLine("firstInt: ");
-            //var firstInt = int.Parse(Console.ReadLine());
-            //Console.WriteLine("secondInt: ");
-            //var secondInt = int.Parse(Console.ReadLine());
-            //var request = new SumRequest() { FirstInt = firstInt, SecondInt = secondInt };
+            //var greeting = new Greeting()
+            //{
+            //    FirstName = "Mike",
+            //    LastName = "Evlantev"
+            //};
+            ////var request = new GreetingRequest() { Greeting = greeting };
 
-            //// This function is called from the server over 127.0.0.1:50051
-            //var response = client.Sum(request);
+            ////// This function is called from the server over 127.0.0.1:50051
+            ////var response = client.Greet(request);
+
+            //var request = new GreetManyTimesRequest() { Greeting = greeting };
+            //var response = client.GreetManyTimes(request);
+            //while (await response.ResponseStream.MoveNext())
+            //{
+            //    Console.WriteLine(response.ResponseStream.Current.Result);
+            //    await Task.Delay(200);
+            //}
             #endregion
 
-            var client = new GreetingService.GreetingServiceClient(channel);
+            #region Calculator Service
+            var client = new CalculatorService.CalculatorServiceClient(channel);
 
-            var greeting = new Greeting()
-            {
-                FirstName = "Mike",
-                LastName = "Evlantev"
-            };
-            //var request = new GreetingRequest() { Greeting = greeting };
+            //var request = GetSumRequest();
+            //var response = client.Sum(request); // This function is called from the server over 127.0.0.1:50051
 
-            //// This function is called from the server over 127.0.0.1:50051
-            //var response = client.Greet(request);
-
-            var request = new GreetManyTimesRequest() { Greeting = greeting };
-            var response = client.GreetManyTimes(request);
+            var request = GetFactorizationRequest();
+            var response = client.Factorise(request); // This function is called from the server over 127.0.0.1:50051
             while (await response.ResponseStream.MoveNext())
             {
                 Console.WriteLine(response.ResponseStream.Current.Result);
                 await Task.Delay(200);
             }
-
+            #endregion
 
             channel.ShutdownAsync().Wait();
             Console.ReadKey();
+        }
+
+        static SumRequest GetSumRequest()
+        {
+            Console.WriteLine("firstInt: ");
+            var firstInt = int.Parse(Console.ReadLine());
+            Console.WriteLine("secondInt: ");
+            var secondInt = int.Parse(Console.ReadLine());
+            return new SumRequest() { FirstInt = firstInt, SecondInt = secondInt };
+        }
+
+        static PrimeDecompositionRequest GetFactorizationRequest()
+        {
+            Console.WriteLine("Number to factorise: ");
+            var num = int.Parse(Console.ReadLine());
+            return new PrimeDecompositionRequest() { Int = num };
         }
     }
 }
