@@ -39,9 +39,12 @@ message GreetEveryoneResponse {
 	string result = 1;
 }
 
+
+
 service GreetingService {
 	// Unary 
 	rpc Greet (GreetingRequest) returns (GreetingResponse) {};
+	rpc GreetWithDeadline (GreetingRequest) returns (GreetingResponse) {};
 
 	// Client Stream
 	rpc LongGreet (stream LongGreetRequest) returns (LongGreetResponse) {};

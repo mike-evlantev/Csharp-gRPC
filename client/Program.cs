@@ -27,13 +27,13 @@ namespace client
             #endregion
 
             #region Greeting Service
-            //var client = new GreetingService.GreetingServiceClient(channel);
+            var client = new GreetingService.GreetingServiceClient(channel);
 
-            //var greeting = new Greeting()
-            //{
-            //    FirstName = "Mike",
-            //    LastName = "Evlantev"
-            //};
+            var greeting = new Greeting()
+            {
+                FirstName = "Mike",
+                LastName = "Evlantev"
+            };
             //var request = new GreetingRequest() { Greeting = greeting };
 
             //// This function is called from the server over 127.0.0.1:50051
@@ -84,10 +84,22 @@ namespace client
 
             //await stream.RequestStream.CompleteAsync();
             //await responseReaderTask;
+
+            try
+            {
+                var response = client.GreetWithDeadline(new GreetingRequest() { Greeting = greeting }, // GreetWithDeadline() has 300 delay
+                                                        deadline: DateTime.UtcNow.AddMilliseconds(100)); // 100 - deadline will be exceeded, 500 - deadline will not be exceeded
+                Console.WriteLine(response.Result);
+            }
+            catch (RpcException ex) when (ex.StatusCode == StatusCode.DeadlineExceeded)
+            {
+                Console.WriteLine("Error: " + ex.Status.Detail);
+                throw;
+            }
             #endregion
 
             #region Calculator Service
-            var client = new CalculatorService.CalculatorServiceClient(channel);
+            //var client = new CalculatorService.CalculatorServiceClient(channel);
 
             //var request = GetSumRequest();
             //var response = client.Sum(request); // This function is called from the server over 127.0.0.1:50051
@@ -127,22 +139,22 @@ namespace client
             //await stream.RequestStream.CompleteAsync();
             //await responseReaderTask;
 
-            try
-            {
-                var number = int.Parse(Console.ReadLine());
-                var response = client.Sqrt(new SqrtRequest() { Int = number });
-                Console.WriteLine(response.Result);
-            }
-            catch (RpcException ex)
-            {
-                Console.WriteLine("RPC Error: " + ex.Status.Detail);
-                throw;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-                throw;
-            }
+            //try
+            //{
+            //    var number = int.Parse(Console.ReadLine());
+            //    var response = client.Sqrt(new SqrtRequest() { Int = number });
+            //    Console.WriteLine(response.Result);
+            //}
+            //catch (RpcException ex)
+            //{
+            //    Console.WriteLine("RPC Error: " + ex.Status.Detail);
+            //    throw;
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("Error: " + e.Message);
+            //    throw;
+            //}
             #endregion
 
             channel.ShutdownAsync().Wait();
